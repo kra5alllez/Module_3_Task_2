@@ -14,8 +14,9 @@ namespace Module_3_Task_2_Vasylchenko
     {
         private readonly string _eng = "eng";
         private bool _flag = false;
+        public string Language { get; set; } = "eng";
 
-        public string DefinitionOfCulture(string cult)
+        public void DefinitionOfCulture(string cult)
         {
             var infoCult = InitCulture();
             foreach (KeyValuePair<string, string> keyCulture in infoCult.Lang)
@@ -23,7 +24,7 @@ namespace Module_3_Task_2_Vasylchenko
                 if (keyCulture.Key == cult)
                 {
                     _flag = true;
-                    return keyCulture.Value;
+                    Language = keyCulture.Value;
                 }
             }
 
@@ -33,13 +34,15 @@ namespace Module_3_Task_2_Vasylchenko
                 {
                     if (keyCulture.Key == _eng)
                     {
-                        _flag = false;
-                        return keyCulture.Value;
+                        Language = keyCulture.Value;
                     }
                 }
             }
+        }
 
-            return null;
+        public void ChangeCult(string cult)
+        {
+            DefinitionOfCulture(cult);
         }
 
         private Language InitCulture()

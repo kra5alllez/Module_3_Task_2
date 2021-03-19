@@ -14,30 +14,54 @@ namespace Module_3_Task_2_Vasylchenko
     {
         private readonly Language _lang;
         private readonly CultureInfo _cult;
-        private readonly ICreateContactList _list;
+        private readonly ContactList _list;
         public Starter()
         {
             _lang = new Language();
             _cult = new CultureInfo();
-            _list = new ICreateContactList();
+            _list = new ContactList();
         }
 
         public void Run()
         {
             Console.WriteLine("Выберите культуру алфавита ");
             var culture = Console.ReadLine();
-            var language = _cult.DefinitionOfCulture(culture);
+            _cult.DefinitionOfCulture(culture);
             Contact contact = new Contact();
-            contact.FullName = "Tjhv";
-            _list.AddContact(contact, language);
-            var d = _list.Push();
-            Console.WriteLine(language);
-            foreach (KeyValuePair<string, List<Contact>> keyValue in d)
+            contact.FullName = "tjhv";
+            contact.PhoneNumber = "+380999854175";
+            Contact contact1 = new Contact();
+            contact1.FullName = "8jhfghv";
+            contact1.PhoneNumber = "+380999875";
+            _list.AddContact(contact, _cult.Language);
+            _list.AddContact(contact1, _cult.Language);
+
+            Contact contact2 = new Contact();
+            contact2.FullName = "3jhv";
+            contact2.PhoneNumber = "+380999854175";
+            Contact contact3 = new Contact();
+            contact3.FullName = "Щjhfghv";
+            contact3.PhoneNumber = "+380999875";
+            _list.AddContact(contact2, _cult.Language);
+            _list.AddContact(contact3, _cult.Language);
+
+            foreach (KeyValuePair<string, List<Contact>> keyValue in _list.Push())
             {
                 Console.WriteLine(keyValue.Key + " : ");
                 foreach (Contact i in keyValue.Value)
                 {
-                    Console.WriteLine(i.FullName);
+                    Console.WriteLine(i.FullName + " : " + i.PhoneNumber);
+                }
+            }
+
+            _cult.ChangeCult("rus");
+            _list.ActionsChangingCulture(_cult.Language);
+            foreach (KeyValuePair<string, List<Contact>> keyValue in _list.Push())
+            {
+                Console.WriteLine(keyValue.Key + " : ");
+                foreach (Contact i in keyValue.Value)
+                {
+                    Console.WriteLine(i.FullName + " : " + i.PhoneNumber);
                 }
             }
         }

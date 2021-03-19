@@ -13,7 +13,7 @@ namespace Module_3_Task_2_Vasylchenko.Services
     {
         public Language InitCulture()
         {
-            var cinfig = File.ReadAllText("ccc.json");
+            var cinfig = File.ReadAllText("config.json");
             var cons = JsonConvert.DeserializeObject<Language>(cinfig);
             return cons;
         }

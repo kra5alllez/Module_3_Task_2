@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ccc.json" />
+    <None Remove="config.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ccc.json">
+    <Content Include="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
